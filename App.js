@@ -10,7 +10,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
-import MainNavigator from './App/Navigator'
+// import MainNavigator from './App/Navigator/StackNavi'
+import DrawerNavi from './App/Navigator/DrawerNavi'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -24,12 +25,7 @@ const instructions = Platform.select({
 export default class App extends Component{
   render() {
     return (
-      <MainNavigator/>
-      // <View style={styles.container}>
-      //   <Text style={styles.welcome}>Welcome to React Native!</Text>
-      //   <Text style={styles.instructions}>To get started, edit App.js</Text>
-      //   <Text style={styles.instructions}>{instructions}</Text>
-      // </View>
+      <DrawerNavi/>
     );
   }
 }
