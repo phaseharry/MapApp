@@ -2,12 +2,12 @@ import { createStackNavigator, createTabNavigator, createAppContainer } from 're
 
 import MapView from '../Views/MapView'
 
-const appNavigator = createStackNavigator({
+const AppNavigator = createStackNavigator({
   MapView
 }, {
   initialRouteName: 'MapView'
 })
 
-const mainNavigator = createAppContainer(appNavigator)
+const MainNavigator = createAppContainer(AppNavigator)
 
-export default mainNavigator
+export default MainNavigator
