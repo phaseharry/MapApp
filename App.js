@@ -12,6 +12,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 
 // import MainNavigator from './App/Navigator/StackNavi'
 import DrawerNavi from './App/Navigator/DrawerNavi'
+import MenuBtn from './App/Components/MenuBtn'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -30,21 +31,3 @@ export default class App extends Component{
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});

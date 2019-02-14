@@ -1,18 +1,28 @@
 import React from 'react';
+import { Platform, Dimensions } from 'react-native'
 import { createDrawerNavigator, createAppContainer } from 'react-navigation';
+import MapView from '../Views/MapView'
 
-import MainNavigator from './StackNavi'
+import StackNavigator from './StackNavi'
 import DrawerContent from './DrawerContent'
 
-const DrawerNavi = createDrawerNavigator({
-  Home: {
-    screen: MainNavigator
+const WIDTH = Dimensions.get('window').width
+
+const DrawerNavi = createDrawerNavigator(
+  {
+    MapScreen: {
+      // screen: StackNavigator
+      screen: MapView
+    },
+    SignUp: {
+      screen: MapView
+    }
+  }, {
+    drawerWidth: WIDTH* 0.53,
+    // contentComponent: DrawerContent,
+    // navigationOptions: { drawerLockMode: "locked-closed" }
   }
-}, {
-  drawerWidth: 150,
-  contentComponent: DrawerContent,
-  navigationOptions: { drawerLockMode: "locked-closed" }
-})
+)
 
 const AppNavi = createAppContainer(DrawerNavi)
 

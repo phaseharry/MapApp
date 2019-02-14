@@ -1,4 +1,4 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 
 import MapView from '../Views/MapView'
 
@@ -7,7 +7,5 @@ const AppNavigator = createStackNavigator({
 }, {
   initialRouteName: 'MapView'
 })
-
-// const MainNavigator = createAppContainer(AppNavigator)
 
 export default AppNavigator
