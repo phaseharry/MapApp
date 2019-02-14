@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
+import { mapBox } from '../../apiKeys'
 
-Mapbox.setAccessToken('pk.eyJ1IjoicGhhc2VoYXJyeSIsImEiOiJjanMzanNkYWQyZ2V5NDNvZDJvdjVzcTZmIn0.662Mz_ounkBRkPUDwEzw7w');
+Mapbox.setAccessToken(mapBox);
 
 export default class Map extends Component{
   renderAnnotations () {

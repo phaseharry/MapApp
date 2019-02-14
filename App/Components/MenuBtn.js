@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export default class MenuBtn extends React.Component{
