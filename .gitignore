@@ -56,4 +56,4 @@ buck-out/
 *.jsbundle
 
 yarn.lock
-apiKeys.js
+.env

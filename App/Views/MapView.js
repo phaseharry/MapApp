@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { connect } from 'react-redux'
 
 import Map from '../Components/Map';
 import MenuBtn from '../Components/MenuBtn'
 
-export default class MapView extends Component{
+import { initialFetch } from '../Store/reducers/restaurants'
+
+class MapView extends Component{
+  componentDidMount(){
+    return this.props.loadRestaurants()
+    .catch(err => console.error(err))
+  }
   render() {
     const { navigation } = this.props
     return (
@@ -20,3 +27,11 @@ const styles = StyleSheet.create({
     flex: 1,
   }
 });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadRestaurants: () => dispatch(initialFetch())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MapView)

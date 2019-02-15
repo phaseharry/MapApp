@@ -1,37 +1,48 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
+import { connect } from 'react-redux';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
-import { mapBox } from '../../apiKeys'
 
-Mapbox.setAccessToken(mapBox);
+Mapbox.setAccessToken('api key goes here');
 
-export default class Map extends Component{
-  renderAnnotations () {
-    return (
-      <Mapbox.PointAnnotation
-        key='pointAnnotation'
-        id='pointAnnotation'
-        coordinate={[11.254, 43.772]}>
+class Map extends React.Component{
+renderAnnotations () {
+  const { restaurants } = this.props;
+  return (
+    <Fragment>
+    {
+      restaurants.map(obj => {
+        const { restaurant } = obj;
+        const { id, location, name, photos_url } = restaurant
+        return (
+          <Mapbox.PointAnnotation
+            key={id}
+            id={id}
+            coordinate={[+location.longitude, +location.latitude ]}
+          >
+            <View style={styles.annotationContainer}>
+              <View style={styles.annotationFill} />
+            </View>
+            <Mapbox.Callout title={name} />
+          </Mapbox.PointAnnotation>
+        )
+      })
+    }
+    </Fragment> 
+  )
+}
 
-        <View style={styles.annotationContainer}>
-          <View style={styles.annotationFill} />
-        </View>
-        <Mapbox.Callout title='Look! An annotation!' />
-      </Mapbox.PointAnnotation>
-    )
-  }
-
-  render() {
-    return (
-        <Mapbox.MapView
-            styleURL={Mapbox.StyleURL.Light}
-            zoomLevel={11}
-            centerCoordinate={[-73.9712, 40.7831]}
-            style={styles.container}>
-            {/* {this.renderAnnotations()} */}
-        </Mapbox.MapView>
-    );
-  }}
+render() {
+  return (
+      <Mapbox.MapView
+          styleURL={Mapbox.StyleURL.Light}
+          zoomLevel={11}
+          centerCoordinate={[-73.9712, 40.7831]}
+          style={styles.container}>
+          {this.renderAnnotations()}
+      </Mapbox.MapView>
+  );
+}}
 
 const styles = StyleSheet.create({
   container: {
@@ -54,3 +65,11 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.6 }],
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    restaurants: state.restaurants
+  }
+}
+
+export default connect(mapStateToProps, null)(Map)
