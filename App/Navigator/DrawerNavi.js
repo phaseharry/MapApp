@@ -1,21 +1,24 @@
 import React from 'react';
 import { Platform, Dimensions } from 'react-native'
 import { createDrawerNavigator, createAppContainer } from 'react-navigation';
-import MapView from '../Views/MapView'
 
-import StackNavigator from './StackNavi'
-import DrawerContent from './DrawerContent'
+import MapView from '../Views/MapView'
+import Login from '../Views/Login'
+import SignUp from '../Views/SignUp'
+
 
 const WIDTH = Dimensions.get('window').width
 
 const DrawerNavi = createDrawerNavigator(
   {
     MapScreen: {
-      // screen: StackNavigator
       screen: MapView
     },
     SignUp: {
-      screen: MapView
+      screen: SignUp
+    },
+    Login: {
+      screen: Login
     }
   }, {
     drawerWidth: WIDTH* 0.53,

@@ -3,7 +3,7 @@ import { StyleSheet, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 
-Mapbox.setAccessToken('api key goes here');
+Mapbox.setAccessToken('api key');
 
 class Map extends React.Component{
 renderAnnotations () {
@@ -36,7 +36,7 @@ render() {
   return (
       <Mapbox.MapView
           styleURL={Mapbox.StyleURL.Light}
-          zoomLevel={11}
+          zoomLevel={13}
           centerCoordinate={[-73.9712, 40.7831]}
           style={styles.container}>
           {this.renderAnnotations()}

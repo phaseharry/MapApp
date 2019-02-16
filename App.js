@@ -9,9 +9,13 @@
 
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import firebase from 'firebase'
 
 import store from './App/Store';
 import DrawerNavi from './App/Navigator/DrawerNavi';
+import config from './Firebase'
+
+firebase.initializeApp(config)
 
 export default class App extends Component{
   render() {
