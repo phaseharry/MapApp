@@ -12,9 +12,9 @@ const loadRestaurants = restaurants => ({
 //thunks creators
 export const initialFetch = (potentialLangAndLongEnteredBasedOnGPSOrUserScrolling) => {
   return dispatch => {
-    return axios.get('https://developers.zomato.com/api/v2.1/geocode?lat=40.7831&lon=-73.9712', {
+    return axios.get('api key', {
       headers: {
-        'user-key': 'api key'
+        'user-key': 'ca0a264092d6bfffffe257412876cd4a'
       }
     })
     .then(res => res.data)

@@ -6,36 +6,38 @@ import Mapbox from '@mapbox/react-native-mapbox-gl';
 Mapbox.setAccessToken('api key');
 
 class Map extends React.Component{
-renderAnnotations () {
-  const { restaurants } = this.props;
-  return (
-    <Fragment>
-    {
-      restaurants.map(obj => {
-        const { restaurant } = obj;
-        const { id, location, name, photos_url } = restaurant
-        return (
-          <Mapbox.PointAnnotation
-            key={id}
-            id={id}
-            coordinate={[+location.longitude, +location.latitude ]}
-          >
-            <View style={styles.annotationContainer}>
-              <View style={styles.annotationFill} />
-            </View>
-            <Mapbox.Callout title={name} />
-          </Mapbox.PointAnnotation>
-        )
-      })
-    }
-    </Fragment> 
-  )
+  renderAnnotations(){
+    const { restaurants, navigation } = this.props;
+    return (
+      <Fragment>
+      {
+        restaurants.map(obj => {
+          const { restaurant } = obj;
+          const { id, location, name } = restaurant
+          return (
+            <Mapbox.PointAnnotation
+              key={id}
+              id={id}
+              coordinate={[+location.longitude, +location.latitude ]}
+            >
+              <View style={styles.annotationContainer} onTouchEnd={() => navigation.navigate('Restaurant', {
+                  restaurantId: id
+              })}>
+                <View style={styles.annotationFill}/>
+              </View>
+              <Mapbox.Callout title={name} />
+            </Mapbox.PointAnnotation>
+          )
+        })
+      }
+      </Fragment> 
+    )
 }
 
-render() {
+render(){
   return (
       <Mapbox.MapView
-          styleURL={Mapbox.StyleURL.Light}
+          styleURL={Mapbox.StyleURL.Dark}
           zoomLevel={13}
           centerCoordinate={[-73.9712, 40.7831]}
           style={styles.container}>

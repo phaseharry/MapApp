@@ -8,6 +8,9 @@ import MenuBtn from '../Components/MenuBtn'
 import { initialFetch } from '../Store/reducers/restaurants'
 
 class MapView extends Component{
+  static navigationOptions = {
+    header: null
+  };
   componentDidMount(){
     return this.props.loadRestaurants()
     .catch(err => console.error(err))
@@ -17,7 +20,7 @@ class MapView extends Component{
     return (
       <View style={styles.container}>
         <MenuBtn navigation={navigation}/>
-        <Map/>
+        <Map navigation={navigation}/>
       </View>
     );
   }}
